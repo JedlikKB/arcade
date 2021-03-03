@@ -3,56 +3,67 @@ import random
 import time
 
 def fel():
-    ypozizcio= urhajo.ycor()
-    ypozizcio += 10
-    urhajo.sety(ypozizcio)
+    ypozicio=urhajo.ycor()
+    ypozicio+=10
+    urhajo.sety(ypozicio)
 
 
 def le():
-    ypozizcio= urhajo.ycor()
-    ypozizcio -= 10
-    urhajo.sety(ypozizcio)
+    ypozicio=urhajo.ycor()
+    ypozicio-=10
+    urhajo.sety(ypozicio)
 
 
 def jobbra():
-    xpozizcio= urhajo.xcor()
-    xpozizcio += 10
-    urhajo.setx(xpozizcio)
+    xpozicio=urhajo.xcor()
+    xpozicio+=10
+    urhajo.setx(xpozicio)
 
 
 def balra():
-    xpozizcio= urhajo.xcor()
-    xpozizcio -= 10
-    urhajo.setx(xpozizcio)
+    xpozicio=urhajo.xcor()
+    xpozicio-=10
+    urhajo.setx(xpozicio)
+
 
 space = turtle.Screen()
 space.setup(width=800, height=600)
-space.bgpic("background.png")
+space.bgpic("Background.png")
 space.addshape("sprite.gif")
+space.addshape("meteor1.gif")
+
 space.tracer(0)
 space.listen()
-space.onkey(balra,"Left")
-space.onkey(jobbra,"Right")
-space.onkey(fel,"Up")
-space.onkey(le,"Down")
-
+space.onkey(fel, "Up")
+space.onkey(le, "Down")
+space.onkey(jobbra, "Right")
+space.onkey(balra, "Left")
 
 urhajo = turtle.Turtle()
 urhajo.shape("sprite.gif")
 urhajo.penup()
 
-while True:
+meteor1 = turtle.Turtle()
+meteor1.shape("meteor1.gif")
+meteor1.penup()
 
+while True:
     space.update()
     time.sleep(0.2)
 
-    if urhajo.ycor()>300:
+    if urhajo.ycor() > 300:
         urhajo.sety(-300)
-    if urhajo.xcor()>400:
+
+    if urhajo.xcor() > 400:
         urhajo.setx(-400)
-    if urhajo.xcor()<-400:
-        urhajo.setx(400)
-    if urhajo.ycor()<-300:
+
+    if urhajo.ycor() < -300:
         urhajo.sety(300)
 
+    if urhajo.xcor() < -400:
+        urhajo.setx(400)
 
+    if urhajo.distance(meteor1.xcor(), meteor1.ycor()) < 15:
+        x = random.randint(-380, 380)
+        y = random.randint(-280, 280) 
+        meteor1.goto(x, y)
