@@ -42,17 +42,19 @@ urhajo = turtle.Turtle()
 urhajo.shape("sprite.gif")
 urhajo.penup()
 
-meteor_jobb = turtle.Turtle()
-meteor_jobb.shape("meteor2.gif")
-meteor_jobb.penup()
+meteorjobb = turtle.Turtle()
+meteorjobb.shape("meteor2.gif")
+meteorjobb.penup()
 
-meteor_jobb.setx(400)
-while meteor_jobb.xcor()>-400:
+x = random.randint(130, 380)
+y = random.randint(-280, 280)
+meteorjobb.goto(x, y)
+while meteorjobb.xcor()>-400:
     space.update()
-    time.sleep(0.1)
-    meteor_mozgas = meteor_jobb.xcor()
-    meteor_mozgas -= 10
-    meteor_jobb.setx(meteor_mozgas)
+    time.sleep(0.2)
+    meteormozgas = meteorjobb.xcor()
+    meteormozgas -= 10
+    meteorjobb.setx(meteormozgas)
 
 while True:
 
